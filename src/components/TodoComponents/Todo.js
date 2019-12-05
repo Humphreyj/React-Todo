@@ -13,6 +13,7 @@ const Todo = (props) => {
 
     const Title = styled.h1`
     text-align: center;
+    font-family: 'Solway', serif;
     
     `
 
@@ -26,15 +27,17 @@ const Todo = (props) => {
     const Done = styled.button `
     margin: 0 auto;
     border: none;
+    border-radius: 12px;
     padding: 3%;
-    font-size: 1.3em;
+    font-size: 1.1em;
+    font-family: 'Bebas Neue', cursive;
     `
     
     return (
         <div>
             <Title className={`todo${props.completed ? " completed" : "" }`} >{props.title}</Title>
             <Buttons className="buttons">
-                <Done className="complete" onClick={e =>props.completedTextHandler(props.item.id)}>Done!</Done>
+                <Done onClick={e =>props.completedTextHandler(props.item.id)}>Done!</Done>
             </Buttons>
             
         </div>

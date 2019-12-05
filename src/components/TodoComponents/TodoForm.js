@@ -1,5 +1,6 @@
 import React from 'react';
-
+import styled from 'styled-components';
+import './Todo.css';
 class TodoForm extends React.Component {
 
     constructor(props) {
@@ -17,13 +18,41 @@ class TodoForm extends React.Component {
 
     submitHandler = (event) =>{
         event.preventDefault();
-        this.props.addTask(this.state.itemText)
-        this.setState({itemText: ''})
+        if(this.state.itemText === '') {
+            alert('Add a title for your task!')
+        }else {
+            this.props.addTask(this.state.itemText)
+            this.setState({itemText: ''})
+        }
+        
     }
 
     render() {
+        
+
+        const Input = styled.input`
+        height: 2.2em;
+        
+        `
+
+        const AddTask = styled.button`
+        margin-top: 3%;
+        padding: 3%;
+        font-size: .9em;
+        width: 100%;
+        font-family: 'Solway', serif;
+
+        `
+
+        const ClearTasks = styled.button `
+        margin-top: 3%;
+        padding: 3%;
+        font-size: .9em;
+        width: 100%;
+
+        `
         return (
-            <div>
+            <div className='formDiv'>
                 <form onSubmit={this.submitHandler}>
                 <input 
                 type="text" 
@@ -32,12 +61,12 @@ class TodoForm extends React.Component {
                 placeholder='Add a task!'
                 onChange={this.changeHandler}
                 />
-                <button type='submit' className="submit">Add task!</button>
+                <AddTask type='submit' className="submit">Add task!</AddTask>
                 </form>
-                <button 
+                <ClearTasks 
                 className="clearCompleted"
                 onClick={this.props.clearCompleted}
-                >Clear Completed Tasks</button>
+                >Clear Completed Tasks</ClearTasks>
             </div>
         );
     }

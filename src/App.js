@@ -79,8 +79,6 @@ class App extends React.Component {
     const AppWrap =  styled.div
     `
     border: 1px solid black;
-    width: 95%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
